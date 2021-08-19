@@ -1,0 +1,86 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+* {
+    font-family: var(--font-body-family);
+    font-weight: var(--font-body-weight);
+    font-style: var(--font-body-style);
+    font-size: var(--font-body-size);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-style: var(--font-heading-style);
+}
+
+.color-btn-text {
+    color: rgb(var(--color-base-text));
+}
+
+.color-base-text {
+    color: rgb(var(--color-base-text));
+}
+
+.color-bg-text {
+    background: rgb(var(--color-base-text));
+}
+
+.bg-btn {
+    background: rgb(var(--color-button));
+}
+
+.color-btn {
+    color: rgb(var(--color-button));
+}
+
+.bg-color-background-1 {
+    background: rgb(var(--color-base-background-1));
+}
+
+.bg-color-background-2 {
+    background: rgb(var(--color-base-background-2));
+}
+
+.bg-color-accent-1 {
+    background: rgb(var(--color-base-accent-1));
+}
+
+.bg-color-accent-2 {
+    background: rgb(var(--color-base-accent-2));
+}
+
+.color-accent-1 {
+    color: rgb(var(--color-base-accent-1));
+}
+
+.color-accent-2 {
+    color: rgb(var(--color-base-accent-2));
+}
+
+.color-background-1 {
+    color: rgb(var(--color-base-background-1));
+}
+
+.color-background-2 {
+    color: rgb(var(--color-base-background-2));
+}
+
+.btn-primary {
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button));
+}
+
+.btn-secondary {
+    border-color: var(--color-outline-button);
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.text a {
+    color: var(--color-outline-button);
+}

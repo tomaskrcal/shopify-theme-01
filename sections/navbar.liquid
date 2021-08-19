@@ -1,0 +1,198 @@
+<div class="z-30 header-wrapper">
+  <header class="">
+    <div class="container-fluid mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
+      <div class="relative h-16 flex justify-between">
+        <div class="relative z-10 px-2 flex lg:px-0">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+              {%- if section.settings.logo != blank -%}
+                {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+                <img
+                  srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                  src="{{ section.settings.logo | img_url: image_size }}"
+                  loading="lazy"
+                  class="header__heading-logo"
+                  width="{{ section.settings.logo_width }}"
+                  height="auto"
+                  alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+                >
+              {%- else -%}
+                <h1 class="text-gray-800 hover:text-black">{{ shop.name }}</h1>
+              {%- endif -%}
+            </a>
+          </div>
+        </div>
+        <div class="relative z-0 flex-1 px-2 flex items-center justify-center sm:absolute sm:inset-0">
+            <nav class="lg:py-2 hidden md:flex lg:space-x-8" aria-label="Global">
+              {%- for link in section.settings.menu.links -%}
+                {%- if link.links != blank -%}
+                  <div x-data="{open: false}">
+                  <div class="relative">
+                {%- endif -%}
+                <a @click="open = !open" href="{{ link.url }}"
+                   class="border-transparent color-base-text py-2 px-3 inline-flex items-center text-sm"
+                   aria-current="page">
+                  {{ link.title | escape }}
+                  {%- if link.links != blank -%}
+                    <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"/>
+                    </svg>
+                  {%- endif -%}
+                </a>
+
+                {%- if link.links != blank -%}
+                  <div
+                    x-show="open"
+                    @click.away="open = false"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 -translate-y-1"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-1"
+                    class="absolute z-10 -ml-4 mt-3 left-1/2 -translate-x-1/2 transform mt-3 px-2 w-64 sm:px-0">
+                    <div class="shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                      <div class="relative bg-white px-2 sm:p-3">
+                        {%- for childlink in link.links -%}
+                          <a href="{{ childlink.url }}" class="-m-2 p-2 block items-start color-base-text">
+                            <div class="ml-4">
+                              <p class="color-base-text">
+                                {{ childlink.title | escape }}
+                              </p>
+                            </div>
+                          </a>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+
+                {%- if link.links != blank -%}
+                  </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </nav>
+        </div>
+        <div class="relative z-10 flex items-center lg:hidden">
+          <!-- Mobile menu button -->
+          <button type="button"
+                  class="p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 color-base-text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <button
+            class="p-1 rounded-full color-base-text focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-offset-gray-800 focus:ring-gray-800">
+            <span class="sr-only">View cart</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            </svg>
+            {%- if cart != empty -%}
+              <div class="cart-count-bubble">
+                {%- if cart.item_count < 100 -%}
+                  <span aria-hidden="true">{{ cart.item_count }}</span>
+                {%- endif -%}
+                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+              </div>
+            {%- endif -%}
+          </button>
+
+          {%- if shop.customer_accounts_enabled -%}
+            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+               class="header__icon header__icon--account link link--text focus-inset">
+              {% render 'icon-account' %}
+              <span class="visually-hidden">
+            {%- liquid
+              if customer
+                echo 'customer.account_fallback' | t
+              else
+                echo 'customer.log_in' | t
+              endif
+            -%}
+          </span>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <nav class="lg:hidden" aria-label="Global" id="mobile-menu">
+      <div class="pt-2 pb-3 px-2 space-y-1">
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}" class="text-gray-800 hover:text-black py-2 px-3 inline-flex items-center text-sm"
+             aria-current="page">
+            {{ link.title | escape }}
+            {%- if link.child_active -%}
+              <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                   viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"/>
+              </svg>
+            {%- endif -%}
+          </a>
+          {%- for childlink in link.links -%}
+
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    </nav>
+  </header>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.navbar.name",
+  "class": "relative z-30",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.navbar.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 30,
+      "max": 150,
+      "step": 5,
+      "default": 80,
+      "unit": "t:sections.navbar.settings.logo_width.unit",
+      "label": "t:sections.navbar.settings.logo_width.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.navbar.settings.menu.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "default": true,
+      "label": "t:sections.navbar.settings.enable_sticky_header.label",
+      "info": "t:sections.navbar.settings.enable_sticky_header.info"
+    }
+  ]
+}
+{% endschema %}

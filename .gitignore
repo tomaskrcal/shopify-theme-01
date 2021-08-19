@@ -1,0 +1,11 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.idea
+node_modules
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
