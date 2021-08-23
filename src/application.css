@@ -69,9 +69,13 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(var(--color-base-background-2));
 }
 
+.btns--multiple a, .btns--multiple button {
+    margin-right: 1rem;
+}
+
 .btn-primary {
-    background: rgb(var(--color-button));
-    color: rgb(var(--color-button));
+    background: rgb(var(--color-base-accent-1));
+    color: rgb(var(--color-base-text));
 }
 
 .btn-secondary {

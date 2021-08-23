@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/tomaskrcal/shopify-theme-01#readme",
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.1",
     "tailwindcss": "^2.2.7"
   }
 }
