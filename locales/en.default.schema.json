@@ -631,12 +631,6 @@
     "homepage-header": {
       "name": "Homepage header",
       "settings": {
-        "text": {
-          "label": "Text"
-        },
-        "button_text": {
-          "label": "Button text"
-        },
         "font_size": {
           "label": "Font size",
           "unit": "rem"
@@ -655,24 +649,41 @@
             "label": "Background 2"
           },
           "label": "Color scheme"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Heading",
+          "settings": {
+            "heading_1": {
+              "label": "Heading 1"
+            },
+            "heading_2": {
+              "label": "Heading 2"
+            },
+            "color_scheme": {
+              "label": "Color scheme",
+              "options": {
+                "options__1": {
+                  "label": "Accent 1"
+                },
+                "options__2": {
+                  "label": "Accent 2"
+                },
+                "options__3": {
+                  "label": "Accent 3"
+                }
+              }
+            }
+          }
         },
-        "richtext": {
-          "label": "Paragraph"
-        },
-        "link": {
-          "label": "Link"
-        },
-        "image_1": {
-          "label": "Image 1"
-        },
-        "image_2": {
-          "label": "Image 2"
-        },
-        "image_3": {
-          "label": "Image 3"
-        },
-        "image_4": {
-          "label": "Image 4"
+        "text": {
+          "name": "Text",
+          "settings": {
+            "text": {
+              "label": "Text"
+            }
+          }
         }
       }
     },

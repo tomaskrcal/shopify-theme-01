@@ -61,7 +61,12 @@
                 {%- endif -%}
                 {%- if block.settings.button_label_2 != blank -%}
                   <a{% if block.settings.button_link_2 != blank %} href="{{ block.settings.button_link_2 }}"{% endif %}
-                    class="flex btn px-8 py-4 border border-transparent shadow-sm{% if block.settings.button_style_secondary_2 %} btn-secondary{% else %} btn-primary{% endif %}"{% if block.settings.button_link_2 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_2 | escape }}</a>
+                    class="flex btn px-8 py-4 border border-transparent shadow-sm{% if block.settings.button_style_secondary_2 %} btn-secondary{% else %} btn-primary{% endif %}"{% if block.settings.button_link_2 == blank %} aria-disabled="true"{% endif %}>
+                    {{ block.settings.button_label_2 | escape }}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
                 {%- endif -%}
               </div>
           {%- endcase -%}
